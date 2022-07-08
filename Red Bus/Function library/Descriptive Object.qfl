@@ -1,0 +1,139 @@
+﻿Dim Email,MobileNo,FName,LastNIn,Pin,res3,res1,res5,res7,res11,res13,res15,res17,res19,res21,res23,res6
+
+'FName="Bhakti_Jod"
+'LastNIn="The_RR"
+'Pin="@@@12"
+'res3="Didn't receive OTP?"
+'res1="Resend OTP"
+'res5="Invalid First Name"
+'res7="Invalid Last Name"
+'res11="Invalid First Name"
+'res13="Invalid Pincode"
+'res15="Movies in Bengaluru"
+'res17="Telugu"
+'res19="Marathi"
+'res21="Tamil"
+'res23="Hindi"
+'Email="baddewad1502@gmail.com"
+'MobileNo="7219721392"
+
+Set browserObject = Description.Create
+browserObject("creationtime").value ="0"
+
+Set pageObject = Description.Create
+pageObject("micclass").value ="Page"
+
+Set HiGuest1Object = Description.Create
+HiGuest1Object("class").value ="sc-hzNEM gUCPEa"
+
+Set EditProfileObject = Description.Create
+EditProfileObject("xpath").value ="//DIV/DIV/DIV/DIV/DIV[normalize-space()='Edit Profile']"
+
+Set EditObject= Description.Create
+EditObject("xpath").value ="//DIV[2]/DIV[2]/DIV[2]"
+
+Set PutEmailObject = Description.Create
+PutEmailObject("xpath").value ="//DIV[2]/DIV[1]/INPUT[1]"
+
+ Set VerifyObject= Description.Create
+ VerifyObject("xpath").value ="//DIV[@id='super-container']/SECTION[1]/DIV[1]/DIV[5]/DIV[1]"
+ 
+ Set ValidationOTPObject = Description.Create
+ ValidationOTPObject("xpath").value ="//DIV/DIV/DIV/DIV/FORM/DIV/DIV/SPAN/SPAN[normalize-space()='Resend OTP']"
+'--------------------------------------EditMobileNO------------------------------------------------------------------------------------------------------
+Set HiGuestObject = Description.Create
+HiGuestObject("class").value ="sc-hzNEM gUCPEa"
+
+Set EditProfile1Object = Description.Create
+EditProfile1Object("xpath").value ="//DIV/DIV/DIV/DIV/DIV[normalize-space()='Edit Profile']"
+
+Set EditO1bject= Description.Create
+EditO1bject("xpath").value ="/DIV[3]/DIV[2]/DIV[2]/SPAN[2]"
+
+Set PutMobileNo1Object= Description.Create
+ PutMobileNo1Object("xpath").value ="//DIV/DIV[normalize-space()='+91 |']/INPUT[1]"
+ 
+ Set VerifyMObject= Description.Create
+ VerifyMObject("xpath").value ="//DIV[@id='super-container']/SECTION[1]/DIV[1]/DIV[5]/DIV[1]"
+ 
+  Set ValidationOTP1Object = Description.Create
+ ValidationOTP1Object("class").value ="sc-gqPbQI hnAxJm helpText"
+
+
+'--------------------------------------First_Name_Invalid------------------------------------------------------------------------------------------------------
+
+'Browser("Browser").Page("Page").WebElement("WebElement_4").Click
+
+Set InsertFName1Object = Description.Create
+ InsertFName1Object("xpath").value ="//DIV[normalize-space()='First Name']/DIV[2]/DIV[1]/INPUT[1]"
+ 
+ Set ValidationFName1Object = Description.Create
+ ValidationFName1Object("xpath").value ="//DIV/DIV[normalize-space()='Invalid First Name']/DIV[1]"
+ 
+
+ 
+ '--------------------------------------Last_Name_Invalid------------------------------------------------------------------------------------------------------
+
+ Set InsertLName1Object = Description.Create
+ InsertLName1Object("xpath").value ="//DIV[@id='super-container']/FORM[1]/DIV[1]/SECTION[1]/DIV[3]/DIV[2]/DIV[1]/INPUT[1]"
+ 
+ Set ValidationLName1Object = Description.Create
+ ValidationLName1Object("class").value ="sc-1uhhv9c-7 itLlDf"
+ 
+' -----------------------------------------------Invalid Pincode--------------------------------------------------------------
+   Set InsertPincode = Description.Create
+ InsertPincode("xpath").value ="//INPUT[@id='postalCode']"
+ 
+ Set  ValidationPincode = Description.Create
+ ValidationPincode("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Invalid Pincode']"
+ 
+' ----------------------------------------Select_CITY---------------------------------------------------------------------------------------------------------------------
+'------------------------------------Bengaluru---------------------------------------------------------------------------------------------------------------------------------------------------
+  Set CurrentCityObject = Description.Create
+ CurrentCityObject("class").value ="sc-LKuAh kxVdmj ellipsis"
+ 
+ Set  SelectImage= Description.Create
+ SelectImage("xpath").value ="//LI/DIV[normalize-space()='Bengaluru']/DIV[1]/IMG[1]"
+ 
+ Set  SelectCityObject= Description.Create
+ SelectCityObject("class").value ="sc-b1h692-7 ehnRRh"
+ 
+'-------------------------------------------------- HYD----------------------------------------------------------------------
+Set CurrentCity1Object = Description.Create
+ CurrentCity1Object("class").value ="sc-LKuAh kxVdmj ellipsis"
+ 
+ Set  SelectImage1= Description.Create
+ SelectImage1("xpath").value ="//LI/DIV[normalize-space()='Hyderabad']/DIV[1]/IMG[1]"
+ 
+ Set  SelectCity1Object= Description.Create
+ SelectCity1Object("xpath").value ="//DIV[@id='super-container']/DIV[@role='main'][1]/DIV[4]/DIV[2]/DIV[2]/DIV[1]/DIV[1]/DIV[1]/DIV[1]"
+ 
+ '-------------------------------------------------- PUNE----------------------------------------------------------------------
+Set CurrentCity2Object = Description.Create
+ CurrentCity2Object("class").value ="sc-LKuAh kxVdmj ellipsis"
+ 
+ Set  SelectImage2= Description.Create
+ SelectImage2("xpath").value ="//LI/DIV[normalize-space()='Pune']/DIV[1]/IMG[1]"
+ 
+ Set  SelectCity2Object= Description.Create
+ SelectCity2Object("xpath").value ="//DIV[@id='super-container']/DIV[@role='main'][1]/DIV[4]/DIV[2]/DIV[2]/DIV[1]/DIV[3]/DIV[1]/DIV[1]"
+ 
+  '-------------------------------------------------- Chennai----------------------------------------------------------------------
+Set CurrentCity3Object = Description.Create
+ CurrentCity3Object("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Pune']"
+ 
+ Set  SelectImage3= Description.Create
+ SelectImage3("xpath").value ="//LI/DIV[normalize-space()='Chennai']/DIV[1]/IMG[1]"
+ 
+ Set  SelectCity3Object= Description.Create
+ SelectCity3Object("xpath").value ="//DIV[@id='super-container']/DIV[@role='main'][1]/DIV[4]/DIV[2]/DIV[2]/DIV[1]/DIV[1]/DIV[1]/DIV[1]"
+ 
+   '-------------------------------------------------- Mumbai----------------------------------------------------------------------
+Set CurrentCity4Object = Description.Create
+ CurrentCity4Object("xpath").value ="//DIV/DIV/SPAN[normalize-space()='Chennai']"
+ 
+ Set  SelectImage4= Description.Create
+ SelectImage4("xpath").value ="//LI/DIV[normalize-space()='Mumbai']/DIV[1]/IMG[1]"
+ 
+ Set  SelectCity4Object= Description.Create
+ SelectCity4Object("xpath").value ="//DIV[@id='super-container']/DIV[@role='main'][1]/DIV[4]/DIV[2]/DIV[2]/DIV[1]/DIV[1]/DIV[1]/DIV[1]"

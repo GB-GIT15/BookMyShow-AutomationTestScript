@@ -1,0 +1,1 @@
+﻿var __testDataSource={items:[{dataFilePath:'Default.xlsx',dataFileFormat:'excel',dataFileFolder:'C:\\Users\\user244\\Documents\\BookMyS\\BMSDriver\\Res1',namePairs:[]}]};

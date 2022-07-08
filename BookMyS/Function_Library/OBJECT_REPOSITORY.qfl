@@ -1,0 +1,249 @@
+﻿'SystemUtil.Run"chrome.exe"
+Function Edit_Email()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Hi, Bhakti Jod_2").Click
+wait(3)
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Edit Profile").Click
+Browser("Browser").Page("Page").WebElement("Edit").Click
+Email=DataTable.Value("EMail","Test Data")
+Browser("Browser").Page("Page_2").WebEdit("WebEdit").Set Email
+Browser("Browser").Page("Page_2").WebElement("Verify").Click
+wait(30)
+
+re1=Browser("Browser").Page("Page_3").WebElement("Didn't receive OTP?").GetROProperty("text")
+re2=DataTable.Value("Expected_Value","Test Data")
+Print re1
+If InStr(re1,re2)>= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re1,re2) = 0 Then
+Edit_Email="Pass"
+Else
+ Edit_Email= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+
+End Function
+'Edit_Email()
+Function Edit_MobileNo()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Hi, Bhakti Jod_3").Click
+Browser("Browser").Page("Movie Tickets, Plays,").WebElement("Edit Profile_3").Click
+Browser("Browser").Page("Page").WebElement("Edit_5").Click
+Browser("Browser").Page("Page_4").WebEdit("WebEdit_2").Set "7219721392"
+Browser("Browser").Page("Page_4").WebElement("Verify").Click
+wait(30)
+re3=Browser("Browser").Page("Page_3").WebElement("Didn't receive OTP?_4").GetROProperty("text")
+re4=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re3,re4) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re3,re4) = 0 Then
+Edit_MobileNo="Pass"
+Else
+ Edit_MobileNo= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+
+End  function
+'Edit_MobileNo ()
+Function First_Name_Invalid()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+'Browser("Browser").Navigate "https://in.bookmyshow.com/my-profile/edit"
+Browser("Browser").Page("Page").WebEdit("first_name").Set "Bhakti_Jod"
+Browser("Browser").Page("Page").WebElement("Invalid First Name").Highlight
+re5=Browser("Browser").Page("Page").WebElement("Invalid First Name").GetROProperty("text")
+
+re6=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re5,re6) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re5,re6) = 0 Then
+First_Name_Invalid="Pass"
+Else
+First_Name_Invalid= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'First_Name_Invalid()
+
+Function Last_Name_InValid()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Page").WebEdit("last_name").Set "The_RR"
+wait(3)
+Browser("Browser").Page("Page").WebElement("Invalid First Name").Highlight
+re7=Browser("Browser").Page("Page").WebElement("Invalid Last Name").GetROProperty("text")
+re8=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re7,re8) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re7,re8) = 0 Then
+Last_Name_InValid="Pass"
+Else
+Last_Name_InValid= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Last_Name_InValid()
+
+'-------------------------------------------------------- Pincode_Special_Character()---------------------------------------------------------------
+Function Pincode_Special_Character()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Page").WebEdit("postalCode").Set "@@@12"
+Browser("Browser").Page("Page").WebElement("Invalid Pincode_7").Highlight
+re9=Browser("Browser").Page("Page").WebElement("Invalid Pincode_7").GetROProperty("text")
+re10=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re9,re10)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re9,re10) = 0 Then
+Pincode_Special_Character="Pass"
+Else
+Pincode_Special_Character= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+
+End Function
+ 'Pincode_Special_Character()
+
+'------------------------------SELECT_CITY--------------------------------------------------------------------------------------
+
+Function Bengaluru()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Mumbai Movie Tickets Online").WebElement("Mumbai_3").Click
+Browser("Browser").Page("Mumbai Movie Tickets Online").Image("BANG").Click
+wait(5)
+Browser("Browser").Page("Bengaluru Movie Tickets").WebElement("Movies in Bengaluru_5").Highlight
+re11=Browser("Browser").Page("Bengaluru Movie Tickets").WebElement("Movies in Bengaluru_5").GetROProperty("text")
+re12=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re11,re12)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re11,re12) = 0 Then
+Bengaluru="Pass"
+Else
+Bengaluru= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Bengaluru()
+Function Hyderabad()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Bengaluru Movie Tickets").WebElement("Bengaluru").Click
+Browser("Browser").Page("Bengaluru Movie Tickets").Image("HYD").Click
+Browser("Browser").Page("Hyderabad Movie Tickets").WebElement("Telugu").Highlight
+re13=Browser("Browser").Page("Hyderabad Movie Tickets").WebElement("Telugu").GetROProperty("text")
+re14=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re13,re14)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re13,re14) = 0 Then
+Hyderabad="Pass"
+Else
+Hyderabad= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Hyderabad()
+
+'-----------------------------------------Pune------------------------------------------------------------------------------------------------
+Function Pune()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Hyderabad Movie Tickets").WebElement("Hyderabad").Click
+Browser("Browser").Page("Hyderabad Movie Tickets").Image("PUNE").Click
+wait(3)
+Browser("Browser").Page("Pune Movie Tickets Online").WebElement("Marathi").Highlight
+re15=Browser("Browser").Page("Pune Movie Tickets Online").WebElement("Marathi").GetROProperty("text")
+re16=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re15,re16)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re15,re16) = 0 Then
+Pune="Pass"
+Else
+Pune= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Pune()
+'----------------------------------------------CHENNAI-------------------------------------------------------
+Function Chennai()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Pune Movie Tickets Online").WebElement("Pune").Click
+Browser("Browser").Page("Pune Movie Tickets Online").Image("CHEN").Click
+Browser("Browser").Page("Chennai Movie Tickets").WebElement("Tamil").Highlight
+re17=Browser("Browser").Page("Chennai Movie Tickets").WebElement("Tamil").GetROProperty("text")
+'re17=Browser("Browser").Page("Chennai Movie Tickets").WebElement("Malayalam").GetROProperty("text")
+re18=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re17,re18)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re17,re18) = 0 Then
+Chennai="Pass"
+Else
+Chennai= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Chennai()
+
+'----------------------------------------------Mumbai-------------------------------------------------------
+Function Mumbai()
+SystemUtil.Run"chrome.exe"
+Browser("Browser").Navigate(DataTable.Value("URL","Test Data"))
+Browser("Browser").Page("Chennai Movie Tickets").WebElement("Chennai").Click
+Browser("Browser").Page("Chennai Movie Tickets").Image("MUMBAI").Click
+Browser("Browser").Page("Mumbai Movie Tickets Online").WebElement("Hindi").Highlight
+re19=Browser("Browser").Page("Mumbai Movie Tickets Online").WebElement("Hindi").GetROProperty("text")
+re20=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(re19,re20)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(re19,re20) = 0 Then
+Mumbai="Pass"
+Else
+Mumbai= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function
+'Mumbai()
+

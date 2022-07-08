@@ -1,0 +1,10 @@
+﻿Function Edit_MobileNo ()
+Browser("Browser").Navigate "https://in.bookmyshow.com/my-profile/edit"
+Browser("Browser").Page("Page").WebElement("Edit_2").Click
+Browser("Browser").Page("Page_4").WebEdit("WebEdit").Set "7219721392"
+Browser("Browser").Page("Page_4").WebElement("Verify").Click
+wait(30)
+Browser("Browser").Page("Page_3").WebElement("Didn't receive OTP?").Highlight
+Browser("Browser").Page("Page_3").WebElement("Didn't receive OTP?").Check CheckPoint("Didn't receive OTP?_2")
+End  function
+Edit_MobileNo ()

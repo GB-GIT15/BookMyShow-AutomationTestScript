@@ -1,0 +1,258 @@
+﻿Function EditEmailResendOTPValidationD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(HiGuest1Object).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement(EditProfileObject).Click
+Browser(browserObject).Page(pageObject).WebElement(EditObject).Click
+Email=DataTable.Value("EMail","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(PutEmailObject).Set Email
+Browser(browserObject).Page(pageObject).WebElement(VerifyObject).Click
+wait(30)
+res2=Browser(browserObject).Page(pageObject).WebElement(ValidationOTPObject).GetROProperty("text")
+res1=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res1,res2) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(res1,res2) = 0 Then
+ EditEmailResendOTPValidationD="Pass"
+Else
+ EditEmailResendOTPValidationD= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'---------------------------EDIT_MOBILE_NO---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Function EditMobileNoResendOTPValidationD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(HiGuestObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement(EditProfile1Object).Click
+Browser(browserObject).Page(pageObject).WebElement(Edit1Object).Click
+MobileNo=DataTable.Value("MobileN","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(PutMobileNo1Object).Set MobileNo
+Browser(browserObject).Page(pageObject).WebElement(VerifyMObject).Click
+wait(30)
+Browser(browserObject).Page(pageObject).WebElement(ValidationOTP1Object).Highlight
+'Browser(browserObject).Page(pageObject).WebElement(ValidationOTP1Object).Check CheckPoint("Didn't receive OTP?_2")
+res4=browser(BrowserObject).Page(pageObject).WebElement(ValidationOTP1Object).GetROProperty("text")
+res3=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res3,res4) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res3,res4) = 0 Then
+  EditMobileNoResendOTPValidationD()="Pass"
+Else
+EditMobileNoResendOTPValidationD()="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End  Function
+
+'-------------------------------------------------------FIRST_NAME_INVALID-----------------------------------------------------------------------------------
+ Function First_Name_InvalidD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+wait(5)
+FName=DataTable.Value("FirstName","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(InsertFName1Object).Set FName
+Browser(browserObject).Page(pageObject).WebElement(ValidationFName1Object).Highlight
+'Browser(browserObject).Page(pageObject).WebElement(ValidationNameObject).Check CheckPoint("Invalid First Name")
+wait(5)
+res6=Browser(browserObject).Page(pageObject).WebElement(ValidationName1Object).GetROProperty("text")
+res5=DataTable.Value("Expected_Value","Test Data")
+print res6
+If Strcomp(res5,res6) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res5,res6) = 0 Then
+   First_Name_InvalidD="Pass"
+Else
+First_Name_InvalidD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function 
+
+'--------------------------------------------Last_Name_Invalid---------------------------------------------------------------------------------------------------------
+Function Last_Name_InvalidD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+wait(3)
+LastNIn=DataTable.Value("LastName","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(InsertLName1Object).Set LastNIn
+wait(5)
+
+Browser(browserObject).Page(pageObject).WebElement(ValidationLName1Object).Highlight
+'Browser(browserObject).Page(pageObject).WebElement(ValidationNameObject).Check CheckPoint(" Invalid Last Name_2")
+
+res8=browser(BrowserObject).Page(pageObject).WebElement(ValidationLName1Object).GetROProperty("text")
+res7=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res7,res8) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res7,res8) = 0 Then
+  Last_Name_InvalidD="Pass"
+Else
+Last_Name_InvalidD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'--------------------------------------------------------------------Invalid Pincode-----------------------------------------------------------------------------------------------------------------
+
+Function Pincode_Special_CharacterD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+wait(5)
+Pin=DataTable.Value("SetPin","Test Data")
+Browser(browserObject).Page(pageObject).WebEdit(InsertPincode).Set Pin
+Browser(browserObject).Page(pageObject).WebElement( ValidationPincode).Highlight
+'Browser(browserObject).Page(pageObject).WebElement(ValidationFName2Object).Check CheckPoint("Invalid Pincode")
+
+'res14=browser(BrowserObject).Page(pageObject).WebElement(ValidationPincode).GetROProperty("text")
+res14=Browser(browserObject).Page(pageObject).WebElement(ValidationPincode).GetROProperty("text")
+
+res13=DataTable.Value("Expected_Value","Test Data")
+print res14
+If Strcomp(res13,res14)= 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res13,res14) = 0 Then
+  Pincode_Special_CharacterD="Pass"
+Else
+Pincode_Special_CharacterD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'---------------------------------------------------------------SELECT_CITY---------------------------------------------------------------------------------------------------------------------------
+
+Function BengaluruD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject ).Page(pageObject).WebElement(CurrentCityObject).Click
+wait(3)
+Browser(browserObject ).Page(pageObject).Image(SelectImage).Click
+wait(5)
+Browser(browserObject ).Page(pageObject).WebElement(SelectCityObject).Highlight
+res16=browser(BrowserObject).Page(pageObject).WebElement(SelectCityObject).GetROProperty("text")
+res15=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res15,res16) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res15,res16) = 0 Then
+  BengaluruD="Pass"
+Else
+BengaluruD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+
+
+
+'--------------------------------------------------HYD----------------------------------------------------------------------------------------
+Function HyderabadD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(CurrentCity1Object).Click
+Browser(browserObject ).Page(pageObject).Image(SelectImage1).Click
+wait(5)
+Browser(browserObject ).Page(pageObject).WebElement(SelectCity1Object).Highlight
+res18=browser(BrowserObject).Page(pageObject).WebElement(SelectCity1Object).GetROProperty("text")
+res17=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res17,res18) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res17,res18) = 0 Then
+ HyderabadD="Pass"
+Else
+HyderabadD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'--------------------------------------------------Pune----------------------------------------------------------------------------------------
+Function PuneD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(CurrentCity2Object).Click
+Browser(browserObject ).Page(pageObject).Image(SelectImage2).Click
+wait(5)
+Browser(browserObject ).Page(pageObject).WebElement(SelectCity2Object).Highlight
+res20=browser(BrowserObject).Page(pageObject).WebElement(SelectCity2Object).GetROProperty("text")
+res19=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res19,res20) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res19,res20) = 0 Then
+ PuneD="Pass"
+Else
+PuneD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'--------------------------------------------------Chennai----------------------------------------------------------------------------------------
+Function ChennaiD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(CurrentCity3Object).Click
+Browser(browserObject ).Page(pageObject).Image(SelectImage3).Click
+wait(5)
+Browser(browserObject ).Page(pageObject).WebElement(SelectCity3Object).Highlight
+res22=browser(BrowserObject).Page(pageObject).WebElement(SelectCity3Object).GetROProperty("text")
+res21=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res21,res22) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res21,res22) = 0 Then
+ChennaiD="Pass"
+Else
+ChennaiD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
+
+'--------------------------------------------------MUMBAI----------------------------------------------------------------------------------------
+Function MumbaiD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+Browser(browserObject).Page(pageObject).WebElement(CurrentCity4Object).Click
+Browser(browserObject ).Page(pageObject).Image(SelectImage4).Click
+wait(5)
+Browser(browserObject ).Page(pageObject).WebElement(SelectCity4Object).Highlight
+res24=browser(BrowserObject).Page(pageObject).WebElement(SelectCity4Object).GetROProperty("text")
+res23=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res23,res24) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+If Strcomp(res23,res24) = 0 Then
+MumbaiD="Pass"
+Else
+MumbaiD="Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End Function

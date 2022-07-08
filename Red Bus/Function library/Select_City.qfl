@@ -1,0 +1,26 @@
+﻿Function EditEmailResendOTPValidationD()
+SystemUtil.Run"chrome.exe"
+Browser(browserObject).Navigate(DataTable.Value("URL","Test Data"))
+wait(3)
+Browser(browserObject).Page(pageObject).WebElement(HiGuestObject).Click
+wait(5)
+Browser(browserObject).Page(pageObject).WebElement(EditProfileObject).Click
+Browser(browserObject).Page(pageObject).WebElement(EditObject).Click
+Browser(browserObject).Page(pageObject).WebEdit(PutEmailObject).Set Email
+Browser(browserObject).Page(pageObject).WebElement(VerifyObject).Click
+wait(30)
+res2=Browser(browserObject).Page(pageObject).WebElement(ValidationOTPObject).GetROProperty("text")
+res1=DataTable.Value("Expected_Value","Test Data")
+If Strcomp(res1,res2) = 0 Then
+Reporter.ReportEvent micPass," Log in " , "Pass"
+Else
+Reporter.ReportEvent micFail,"Log in" , "Fail"
+End if
+
+If Strcomp(res1,res2) = 0 Then
+ EditEmailResendOTPValidationD="Pass"
+Else
+ EditEmailResendOTPValidationD= "Fail"
+End if
+SystemUtil.CloseProcessByName"chrome.exe"
+End function
